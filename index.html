@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odoya Rose - Esoterismo & Magia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mystic: {
+                            900: '#0f071e', // Very dark background
+                            800: '#1a0b2e', // Dark background
+                            700: '#2d1b4e', // Card background
+                            600: '#4a2b7a', // Accent purple
+                            gold: '#ffd700', // Primary accent
+                            'gold-hover': '#ffea00',
+                            text: '#e0d6eb', // Main text
+                            muted: '#9ca3af' // Muted text
+                        }
+                    },
+                    fontFamily: {
+                        'serif': ['Cinzel', 'serif'],
+                        'sans': ['Montserrat', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'slide-in-right': 'slideInRight 0.3s ease-out forwards',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        glow: {
+                            'from': { boxShadow: '0 0 10px -5px #ffd700' },
+                            'to': { boxShadow: '0 0 20px 5px rgba(255, 215, 0, 0.4)' },
+                        },
+                        slideInRight: {
+                            '0%': { transform: 'translateX(100%)' },
+                            '100%': { transform: 'translateX(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root {
+            --glass-bg: rgba(45, 27, 78, 0.4);
+            --glass-border: rgba(255, 215, 0, 0.15);
+        }
+
+        body {
+            background-color: #0f071e;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(74, 43, 122, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(218, 165, 32, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
+            color: #e0d6eb;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism utility */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        /* Interactive Elements */
+        .btn-mystic {
+            background: linear-gradient(135deg, #ffd700, #daa520);
+            color: #0f071e;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid transparent;
+        }
+        
+        .btn-mystic:hover {
+            background: linear-gradient(135deg, #ffea00, #ffb300);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -10px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #ffd700;
+            border: 1px solid #ffd700;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 215, 0, 0.1);
+            box-shadow: inset 0 0 10px rgba(255, 215, 0, 0.2);
+        }
+
+        /* Product Cards */
+        .product-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(255, 215, 0, 0.4);
+            box-shadow: 0 15px 30px -10px rgba(74, 43, 122, 0.6);
+        }
+
+        .product-icon-wrapper {
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Form Elements */
+        .mystic-input {
+            background: rgba(15, 7, 30, 0.6);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .mystic-input:focus {
+            outline: none;
+            border-color: #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+            background: rgba(26, 11, 46, 0.8);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f071e; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4a2b7a; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ffd700; 
+        }
+
+        /* Particle Canvas */
+        #particles-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Cart Sidebar Overlay */
+        .cart-overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .cart-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Cart Sidebar */
+        #cart-sidebar {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #cart-sidebar.open {
+            transform: translateX(0);
+        }
+        
+        .cart-item-anim {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        /* Image Mask for Hero */
+        .hero-image-mask {
+            mask-image: radial-gradient(circle at center, black 40%, transparent 70%);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 70%);
+        }
+        
+        /* Smoke Effect Overlay */
+        .smoke-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 30% 70%, rgba(200, 200, 255, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 70% 30%, rgba(200, 200, 255, 0.1) 0%, transparent 30%);
+            mix-blend-mode: screen;
+            animation: smokeMove 8s infinite alternate ease-in-out;
+            pointer-events: none;
+            z-index: 20;
+        }
+
+        @keyframes smokeMove {
+            0% { transform: scale(1) translate(0, 0); opacity: 0.5; }
+            50% { transform: scale(1.1) translate(10px, -15px); opacity: 0.8; }
+            100% { transform: scale(1.05) translate(-10px, 10px); opacity: 0.5; }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-mystic-text relative">
+
+    <!-- Background Canvas for Stars/Particles -->
+    <canvas id="particles-bg"></canvas>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 glass transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-2 group">
+                    <i class="fas fa-moon text-mystic-gold text-2xl group-hover:rotate-12 transition-transform"></i>
+                    <span class="font-serif text-xl md:text-2xl font-bold tracking-widest text-white">ODOYA <span class="text-mystic-gold">ROSE</span></span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="text-sm font-semibold tracking-wider hover:text-mystic-gold transition-colors">INÍCIO</a>
+                    <a href="#loja" class="text-sm font-semibold tracking-wider hover:text-mystic-gold transition-colors">LOJA MÁGICA</a>
+                    <a href="#sobre" class="text-sm font-semibold tracking-wider hover:text-mystic-gold transition-colors">A ORÁCULO</a>
+                    <a href="#depoimentos" class="text-sm font-semibold tracking-wider hover:text-mystic-gold transition-colors">DEPOIMENTOS</a>
+                    <button onclick="toggleCart()" class="relative flex items-center group">
+                        <div class="w-10 h-10 rounded-full glass flex items-center justify-center group-hover:border-mystic-gold transition-colors">
+                            <i class="fas fa-shopping-bag text-mystic-gold"></i>
+                        </div>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-mystic-900">0</span>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button & Cart -->
+                <div class="flex items-center space-x-4 md:hidden">
+                    <button onclick="toggleCart()" class="relative p-2">
+                        <i class="fas fa-shopping-bag text-xl text-mystic-gold"></i>
+                        <span id="cart-count-mobile" class="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-white hover:text-mystic-gold">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-mystic-700">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#inicio" class="block px-3 py-2 text-base font-medium hover:bg-mystic-800 rounded-md">Início</a>
+                <a href="#loja" class="block px-3 py-2 text-base font-medium hover:bg-mystic-800 rounded-md">Loja Mágica</a>
+                <a href="#sobre" class="block px-3 py-2 text-base font-medium hover:bg-mystic-800 rounded-md">A Oráculo</a>
+                <a href="#depoimentos" class="block px-3 py-2 text-base font-medium hover:bg-mystic-800 rounded-md">Depoimentos</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="inicio" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        
+        <!-- Decorative background elements -->
+        <div class="absolute top-1/4 left-10 w-64 h-64 bg-mystic-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-10 w-80 h-80 bg-mystic-gold rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse" style="animation-delay: 2s;"></div>
+
+        <div class="max-w-7xl mx-auto px-4 z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            <!-- Left Text Content -->
+            <div class="text-center lg:text-left order-2 lg:order-1">
+                <div class="inline-block px-4 py-1 rounded-full glass text-mystic-gold text-xs font-bold tracking-widest mb-6 uppercase border-mystic-gold/30">
+                    <i class="fas fa-star mr-2"></i> Guiando Destinos
+                </div>
+                <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
+                    Desvende os <br/>
+                    <span class="gold-gradient-text">Mistérios</span> do Seu Caminho
+                </h1>
+                <p class="text-lg text-mystic-muted mb-8 max-w-xl mx-auto lg:mx-0 font-light">
+                    Consultas oraculares, trabalhos energéticos e itens consagrados para iluminar sua jornada espiritual e atrair prosperidade.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#loja" class="btn-mystic px-8 py-4 rounded-lg font-bold text-sm tracking-widest uppercase w-full sm:w-auto text-center">
+                        Explorar a Loja
+                    </a>
+                    <a href="#sobre" class="btn-outline px-8 py-4 rounded-lg font-bold text-sm tracking-widest uppercase w-full sm:w-auto text-center">
+                        Conhecer a Oráculo
+                    </a>
+                </div>
+
+                <div class="mt-10 flex items-center justify-center lg:justify-start space-x-6 text-sm text-mystic-muted">
+                    <div class="flex items-center"><i class="fas fa-shield-alt text-mystic-gold mr-2"></i> Sigilo Absoluto</div>
+                    <div class="flex items-center"><i class="fas fa-history text-mystic-gold mr-2"></i> +10 Anos de Magia</div>
+                </div>
+            </div>
+
+            <!-- Right Visual Content (Generated Image) -->
+            <div class="order-1 lg:order-2 flex justify-center items-center relative h-[400px] lg:h-[600px] group">
+                <!-- Magical Rings Background -->
+                <div class="absolute w-72 h-72 lg:w-96 lg:h-96 border border-mystic-gold/20 rounded-full animate-[spin_15s_linear_infinite] z-0"></div>
+                <div class="absolute w-80 h-80 lg:w-[450px] lg:h-[450px] border border-mystic-600/30 rounded-full animate-[spin_20s_linear_infinite_reverse] z-0"></div>
+                
+                <!-- Main Image Container -->
+                <div class="relative w-full h-full flex justify-center items-center z-10 animate-float">
+                    
+                    <div class="relative w-[300px] h-[400px] lg:w-[400px] lg:h-[500px] rounded-[40px] overflow-hidden border border-mystic-gold/30 shadow-[0_0_40px_rgba(74,43,122,0.6)] group-hover:shadow-[0_0_60px_rgba(255,215,0,0.4)] transition-all duration-500">
+                        <!-- Loading Indicator -->
+                        <div id="hero-img-loading" class="absolute inset-0 bg-mystic-800 flex flex-col items-center justify-center z-30">
+                            <i class="fas fa-spinner fa-spin text-4xl text-mystic-gold mb-4"></i>
+                            <span class="text-mystic-gold text-sm font-serif tracking-widest animate-pulse">Invocando a Imagem...</span>
+                        </div>
+                        
+                        <!-- The Image -->
+                        <img id="hero-generated-image" src="" alt="Odoya Rose - Oráculo Cigana" class="w-full h-full object-cover hero-image-mask opacity-0 transition-opacity duration-1000 z-10 relative">
+                        
+                        <!-- Smoke overlay -->
+                        <div class="smoke-overlay"></div>
+                        
+                        <!-- Overlay gradient for text integration -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-mystic-900 via-transparent to-transparent z-20"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Store Section -->
+    <section id="loja" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4">Loja <span class="gold-gradient-text">Mágica</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-mystic-gold to-transparent mx-auto mb-6"></div>
+                <p class="text-mystic-muted max-w-2xl mx-auto">
+                    Artefatos consagrados, rituais e leituras. Cada item é preparado individualmente com intenção e magia.
+                </p>
+            </div>
+
+            <!-- Filters (Visual only for UX) -->
+            <div class="flex justify-center space-x-4 mb-12 overflow-x-auto pb-4 hide-scrollbar">
+                <button class="px-6 py-2 rounded-full bg-mystic-800 border border-mystic-gold text-mystic-gold text-sm font-semibold whitespace-nowrap hover:bg-mystic-700 transition">Todos</button>
+                <button class="px-6 py-2 rounded-full glass text-white text-sm whitespace-nowrap hover:border-mystic-gold transition">Consultas</button>
+                <button class="px-6 py-2 rounded-full glass text-white text-sm whitespace-nowrap hover:border-mystic-gold transition">Banhos & Ervas</button>
+                <button class="px-6 py-2 rounded-full glass text-white text-sm whitespace-nowrap hover:border-mystic-gold transition">Cristais</button>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="product-grid">
+                <!-- Products will be generated by JS -->
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- About / Stats -->
+    <section id="sobre" class="py-20 relative z-10 bg-mystic-900 border-y border-mystic-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold mb-6">A Força Oculta de <br/><span class="text-mystic-gold">Odoya Rose</span></h2>
+                    <p class="text-mystic-muted mb-6 leading-relaxed">
+                        Nascida em berço de tradições místicas, dedico minha vida a decifrar as mensagens do invisível. Utilizo o Tarot de Marselha, a intuição clarividente e a sabedoria das ervas para alinhar seus caminhos.
+                    </p>
+                    <p class="text-mystic-muted mb-8 leading-relaxed">
+                        Meu compromisso é com a verdade, oferecendo clareza nas decisões amorosas, financeiras e espirituais, sempre com ética e sigilo.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="glass p-4 rounded-xl text-center border-t-2 border-mystic-gold">
+                            <div class="text-3xl font-bold text-white mb-1">2.5k+</div>
+                            <div class="text-xs text-mystic-gold uppercase tracking-wider">Consultas Realizadas</div>
+                        </div>
+                        <div class="glass p-4 rounded-xl text-center border-t-2 border-mystic-600">
+                            <div class="text-3xl font-bold text-white mb-1">100%</div>
+                            <div class="text-xs text-mystic-muted uppercase tracking-wider">Sigilo & Segurança</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative flex justify-center">
+                    <div class="w-full max-w-md aspect-square rounded-full glass flex items-center justify-center p-8 relative overflow-hidden">
+                        <!-- Tarot Cards Decoration -->
+                        <div class="absolute w-24 h-36 bg-mystic-800 border border-mystic-gold/50 rounded-lg transform -rotate-15 -left-4 top-1/4 shadow-xl flex items-center justify-center">
+                            <i class="fas fa-sun text-4xl text-mystic-gold opacity-50"></i>
+                        </div>
+                        <div class="absolute w-24 h-36 bg-mystic-800 border border-mystic-gold/50 rounded-lg transform rotate-15 -right-4 bottom-1/4 shadow-xl flex items-center justify-center">
+                            <i class="fas fa-moon text-4xl text-mystic-muted opacity-50"></i>
+                        </div>
+                        
+                        <!-- Center Focus -->
+                        <div class="w-full h-full rounded-full border-2 border-dashed border-mystic-600 animate-[spin_20s_linear_infinite] absolute"></div>
+                        <div class="text-center z-10">
+                            <i class="fas fa-eye text-6xl text-mystic-gold mb-4"></i>
+                            <h3 class="font-serif text-xl font-bold">Visão Além<br>do Veú</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="depoimentos" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4">Mensagens do <span class="gold-gradient-text">Universo</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-mystic-gold to-transparent mx-auto mb-6"></div>
+                <p class="text-mystic-muted max-w-2xl mx-auto">
+                    Relatos de almas que cruzaram nosso caminho e permitiram que a magia transformasse suas vidas.
+                </p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-6">
+                <!-- Testimonial 1 -->
+                <div class="glass w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] p-8 rounded-2xl relative group hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                    <i class="fas fa-quote-left text-4xl text-mystic-600 absolute top-6 right-6 opacity-20 group-hover:text-mystic-gold transition-colors"></i>
+                    <div class="flex text-mystic-gold text-xs mb-5">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-mystic-text text-sm italic mb-6 leading-relaxed flex-grow">
+                        "Estava perdida e as cartas revelaram exatamente o que eu precisava ouvir. O trabalho de adoçamento trouxe a paz que faltava no meu relacionamento. Gratidão eterna à Odoya Rose."
+                    </p>
+                    <div class="flex items-center mt-auto border-t border-mystic-700 pt-4">
+                        <div class="w-10 h-10 rounded-full bg-mystic-800 flex items-center justify-center text-mystic-gold font-serif font-bold mr-4 border border-mystic-600/50">
+                            M
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Maria Silva</h4>
+                            <span class="text-xs text-mystic-muted">Consulta & Ritual</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="glass w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] p-8 rounded-2xl relative group hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                    <i class="fas fa-quote-left text-4xl text-mystic-600 absolute top-6 right-6 opacity-20 group-hover:text-mystic-gold transition-colors"></i>
+                    <div class="flex text-mystic-gold text-xs mb-5">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-mystic-text text-sm italic mb-6 leading-relaxed flex-grow">
+                        "Fiz o Mapa Astral Kármico e fiquei impressionado com a precisão. Muitas coisas que eu não entendia sobre minha vida finalmente fizeram sentido. Um trabalho espetacular e iluminado."
+                    </p>
+                    <div class="flex items-center mt-auto border-t border-mystic-700 pt-4">
+                        <div class="w-10 h-10 rounded-full bg-mystic-800 flex items-center justify-center text-mystic-gold font-serif font-bold mr-4 border border-mystic-600/50">
+                            J
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">João P.</h4>
+                            <span class="text-xs text-mystic-muted">Mapa Astral</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="glass w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] p-8 rounded-2xl relative group hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                    <i class="fas fa-quote-left text-4xl text-mystic-600 absolute top-6 right-6 opacity-20 group-hover:text-mystic-gold transition-colors"></i>
+                    <div class="flex text-mystic-gold text-xs mb-5">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-mystic-text text-sm italic mb-6 leading-relaxed flex-grow">
+                        "O kit banho de descarrego é maravilhoso! Senti uma leveza imediata e as portas começaram a se abrir no meu trabalho na mesma semana. Tem muita energia boa envolvida nesses produtos."
+                    </p>
+                    <div class="flex items-center mt-auto border-t border-mystic-700 pt-4">
+                        <div class="w-10 h-10 rounded-full bg-mystic-800 flex items-center justify-center text-mystic-gold font-serif font-bold mr-4 border border-mystic-600/50">
+                            C
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Camila T.</h4>
+                            <span class="text-xs text-mystic-muted">Loja Mágica</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="glass w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] p-8 rounded-2xl relative group hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                    <i class="fas fa-quote-left text-4xl text-mystic-600 absolute top-6 right-6 opacity-20 group-hover:text-mystic-gold transition-colors"></i>
+                    <div class="flex text-mystic-gold text-xs mb-5">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-mystic-text text-sm italic mb-6 leading-relaxed flex-grow">
+                        "Sempre tive um pé atrás com consultas online, mas a Odoya me passou uma confiança absurda. A leitura do Tarot de Marselha foi um divisor de águas nas minhas decisões financeiras."
+                    </p>
+                    <div class="flex items-center mt-auto border-t border-mystic-700 pt-4">
+                        <div class="w-10 h-10 rounded-full bg-mystic-800 flex items-center justify-center text-mystic-gold font-serif font-bold mr-4 border border-mystic-600/50">
+                            R
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Roberto F.</h4>
+                            <span class="text-xs text-mystic-muted">Consulta de Tarot</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 5 -->
+                <div class="glass w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] p-8 rounded-2xl relative group hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                    <i class="fas fa-quote-left text-4xl text-mystic-600 absolute top-6 right-6 opacity-20 group-hover:text-mystic-gold transition-colors"></i>
+                    <div class="flex text-mystic-gold text-xs mb-5">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-mystic-text text-sm italic mb-6 leading-relaxed flex-grow">
+                        "Comprei o trio de velas intencionadas e o amuleto de proteção. A embalagem é linda, chegou super rápido e dá pra sentir o carinho em cada detalhe. Virou minha loja do coração."
+                    </p>
+                    <div class="flex items-center mt-auto border-t border-mystic-700 pt-4">
+                        <div class="w-10 h-10 rounded-full bg-mystic-800 flex items-center justify-center text-mystic-gold font-serif font-bold mr-4 border border-mystic-600/50">
+                            A
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Ana Clara</h4>
+                            <span class="text-xs text-mystic-muted">Loja Mágica</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="py-24 relative z-10">
+        <div class="max-w-3xl mx-auto px-4">
+            <div class="glass rounded-2xl p-8 md:p-12 relative overflow-hidden">
+                <!-- Decorative BG for form -->
+                <i class="fas fa-feather-alt text-[150px] text-mystic-800 absolute -bottom-10 -right-10 opacity-20 transform -rotate-45"></i>
+                
+                <div class="text-center mb-10 relative z-10">
+                    <h2 class="font-serif text-3xl font-bold mb-2">Invoque o Oráculo</h2>
+                    <p class="text-mystic-gold text-sm">Dúvidas sobre rituais? Envie sua mensagem.</p>
+                </div>
+
+                <form class="space-y-6 relative z-10" onsubmit="event.preventDefault(); showNotification('Mensagem enviada! Os espíritos sussurrarão a resposta em breve.', 'success'); this.reset();">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold text-mystic-muted mb-2 uppercase tracking-wider">Seu Nome</label>
+                            <input type="text" required class="mystic-input w-full p-3 rounded-lg" placeholder="Nome de batismo">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-mystic-muted mb-2 uppercase tracking-wider">E-mail</label>
+                            <input type="email" required class="mystic-input w-full p-3 rounded-lg" placeholder="seu@email.com">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-mystic-muted mb-2 uppercase tracking-wider">Mensagem</label>
+                        <textarea required rows="4" class="mystic-input w-full p-3 rounded-lg resize-none" placeholder="Escreva sua intenção..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-mystic w-full py-4 rounded-xl font-bold tracking-widest uppercase flex justify-center items-center">
+                        <span>Enviar Mensagem</span>
+                        <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0a0414] py-10 border-t border-mystic-800 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0 text-center md:text-left">
+                <h3 class="font-serif text-xl font-bold text-white tracking-widest">ODOYA <span class="text-mystic-gold">ROSE</span></h3>
+                <p class="text-xs text-mystic-muted mt-1">Serviços Esotéricos & E-commerce Mágico</p>
+            </div>
+            
+            <div class="flex space-x-6 mb-6 md:mb-0">
+                <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center text-white hover:text-mystic-gold hover:border-mystic-gold transition-all"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center text-white hover:text-mystic-gold hover:border-mystic-gold transition-all"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            
+            <div class="text-center md:text-right text-xs text-mystic-muted">
+                <p>&copy; 2026 Odoya Rose. Todos os direitos reservados.</p>
+                <p class="mt-1 opacity-50">Para fins de entretenimento e orientação espiritual.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar Overlay -->
+    <div id="cart-overlay" class="fixed inset-0 cart-overlay z-40" onclick="toggleCart()"></div>
+
+    <!-- Cart Sidebar Panel -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full sm:w-[400px] bg-mystic-900 border-l border-mystic-700 shadow-2xl z-50 flex flex-col">
+        
+        <!-- Cart Header -->
+        <div class="p-6 border-b border-mystic-800 flex justify-between items-center bg-mystic-800/50">
+            <div class="flex items-center">
+                <i class="fas fa-shopping-bag text-mystic-gold text-2xl mr-3"></i>
+                <h2 class="font-serif text-xl font-bold">Seu Caldeirão</h2>
+            </div>
+            <button onclick="toggleCart()" class="text-mystic-muted hover:text-white w-8 h-8 rounded-full glass flex items-center justify-center">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- Cart Items Area -->
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <!-- Items injected by JS -->
+            <div class="h-full flex flex-col items-center justify-center text-mystic-muted opacity-50" id="empty-cart-msg">
+                <i class="fas fa-ghost text-4xl mb-4"></i>
+                <p>Seu caldeirão está vazio.</p>
+            </div>
+        </div>
+
+        <!-- Cart Footer / Checkout -->
+        <div class="p-6 border-t border-mystic-800 bg-mystic-800/80">
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-mystic-muted font-medium">Subtotal</span>
+                <span class="text-xl font-bold text-white" id="cart-total">R$ 0,00</span>
+            </div>
+            <button onclick="checkout()" class="btn-mystic w-full py-4 rounded-xl font-bold uppercase tracking-widest flex justify-center items-center">
+                <i class="fas fa-lock mr-2"></i> Finalizar Compra
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <script>
+        // --- Product Data ---
+        const products = [
+            { id: 1, name: "Tarot de Marselha - Consulta", desc: "Leitura completa de 1h via vídeo. Passado, presente e tendências futuras.", price: 120.00, oldPrice: 150.00, icon: "fa-cards", color: "text-purple-400", badge: "MAIS VENDIDO" },
+            { id: 2, name: "Limpeza Energética", desc: "Sessão à distância para quebra de demandas e alinhamento de chakras.", price: 89.90, icon: "fa-sparkles", color: "text-blue-400" },
+            { id: 3, name: "Ritual do Amor (Adoçamento)", desc: "Trabalho na linha branca para harmonia em relacionamentos. Acompanha vídeo.", price: 157.00, icon: "fa-heart", color: "text-red-400", badge: "NOVO" },
+            { id: 4, name: "Kit Banho de Descarrego", desc: "Mix de 7 ervas sagradas preparadas e consagradas. Envio físico.", price: 45.00, icon: "fa-leaf", color: "text-green-400" },
+            { id: 5, name: "Mapa Astral Kármico", desc: "Análise profunda das vidas passadas e missão de alma. PDF de 30 pgs.", price: 95.00, icon: "fa-star-and-crescent", color: "text-yellow-200" },
+            { id: 6, name: "Amuleto Olho Grego Consagrado", desc: "Colar em prata 925 cruzado para proteção contra inveja.", price: 110.00, icon: "fa-eye", color: "text-blue-500" },
+            { id: 7, name: "Velas Intencionadas (Trio)", desc: "Prosperidade, Amor e Proteção. Acompanha orações específicas.", price: 54.90, icon: "fa-fire-flame-curved", color: "text-orange-400" },
+            { id: 8, name: "Esfera de Cristal de Quartzo", desc: "Aprox. 8cm. Ideal para meditação e vidência. Purificada.", price: 189.00, icon: "fa-gem", color: "text-pink-200" }
+        ];
+
+        // --- Cart State ---
+        let cart = [];
+        const isCartOpen = false;
+
+        // --- Initialize Store ---
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+
+            products.forEach(product => {
+                // Formatting price
+                const priceFormatted = product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                const oldPriceHtml = product.oldPrice ? `<span class="text-xs line-through text-mystic-muted block mb-1">R$ ${product.oldPrice.toFixed(2).replace('.',',')}</span>` : '';
+                const badgeHtml = product.badge ? `<div class="absolute top-3 right-3 bg-mystic-600 text-white text-[10px] font-bold px-2 py-1 rounded shadow-md z-10">${product.badge}</div>` : '';
+
+                const card = document.createElement('div');
+                card.className = 'glass rounded-2xl p-6 flex flex-col product-card relative overflow-hidden group';
+                card.innerHTML = `
+                    ${badgeHtml}
+                    <!-- Abstract bg decoration inside card -->
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-mystic-800 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-700 ease-in-out"></div>
+                    
+                    <div class="h-32 flex items-center justify-center mb-4 relative z-10 product-icon-wrapper">
+                        <i class="fa-solid ${product.icon} text-5xl ${product.color} drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]"></i>
+                    </div>
+                    
+                    <div class="relative z-10 flex-grow flex flex-col">
+                        <h3 class="font-serif text-lg font-bold text-white mb-2 leading-tight">${product.name}</h3>
+                        <p class="text-xs text-mystic-muted mb-4 flex-grow">${product.desc}</p>
+                        
+                        <div class="flex items-end justify-between mt-auto">
+                            <div>
+                                ${oldPriceHtml}
+                                <span class="text-xl font-bold text-mystic-gold">${priceFormatted}</span>
+                            </div>
+                            <button onclick="addToCart(${product.id})" class="w-10 h-10 rounded-full btn-mystic flex items-center justify-center shrink-0 shadow-lg" aria-label="Adicionar ${product.name} ao carrinho">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // --- Cart Functions ---
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartUI();
+            showNotification(`${product.name} adicionado ao caldeirão!`, 'cart');
+            
+            // Subtle animation on cart icon
+            const cartIcons = document.querySelectorAll('.fa-shopping-bag');
+            cartIcons.forEach(icon => {
+                icon.classList.add('animate-bounce');
+                setTimeout(() => icon.classList.remove('animate-bounce'), 1000);
+            });
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        function changeQuantity(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCartUI();
+                }
+            }
+        }
+
+        function updateCartUI() {
+            // Update counts
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').innerText = totalItems;
+            document.getElementById('cart-count-mobile').innerText = totalItems;
+
+            // Update List
+            const cartItemsContainer = document.getElementById('cart-items');
+            const emptyMsg = document.getElementById('empty-cart-msg');
+            
+            if (cart.length === 0) {
+                emptyMsg.style.display = 'flex';
+                // Remove all items except empty message
+                Array.from(cartItemsContainer.children).forEach(child => {
+                    if (child.id !== 'empty-cart-msg') child.remove();
+                });
+            } else {
+                emptyMsg.style.display = 'none';
+                
+                // Clear existing items to rebuild
+                Array.from(cartItemsContainer.children).forEach(child => {
+                    if (child.id !== 'empty-cart-msg') child.remove();
+                });
+
+                cart.forEach(item => {
+                    const priceFormatted = (item.price * item.quantity).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                    
+                    const itemEl = document.createElement('div');
+                    itemEl.className = 'glass rounded-xl p-4 flex gap-4 items-center cart-item-anim';
+                    itemEl.innerHTML = `
+                        <div class="w-12 h-12 rounded bg-mystic-800 flex items-center justify-center shrink-0 border border-mystic-600/50">
+                            <i class="fa-solid ${item.icon} ${item.color} text-xl"></i>
+                        </div>
+                        <div class="flex-grow min-w-0">
+                            <h4 class="text-sm font-bold text-white truncate">${item.name}</h4>
+                            <div class="text-mystic-gold font-bold text-sm">${priceFormatted}</div>
+                        </div>
+                        <div class="flex items-center space-x-2 bg-mystic-900 rounded-lg p-1 border border-mystic-700 shrink-0">
+                            <button onclick="changeQuantity(${item.id}, -1)" class="w-6 h-6 flex items-center justify-center hover:text-mystic-gold"><i class="fas fa-minus text-xs"></i></button>
+                            <span class="text-sm font-bold w-4 text-center">${item.quantity}</span>
+                            <button onclick="changeQuantity(${item.id}, 1)" class="w-6 h-6 flex items-center justify-center hover:text-mystic-gold"><i class="fas fa-plus text-xs"></i></button>
+                        </div>
+                        <button onclick="removeFromCart(${item.id})" class="text-mystic-muted hover:text-red-400 shrink-0 ml-2 p-1">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    `;
+                    cartItemsContainer.appendChild(itemEl);
+                });
+            }
+
+            // Update Total
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('cart-total').innerText = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            const overlay = document.getElementById('cart-overlay');
+            
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+            
+            // Prevent body scroll when cart is open
+            if(sidebar.classList.contains('open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                showNotification('Seu caldeirão está vazio!', 'error');
+                return;
+            }
+            toggleCart();
+            showNotification('Redirecionando para portal de pagamento seguro...', 'success');
+            // In a real app, redirect to checkout page here
+            setTimeout(() => {
+                cart = [];
+                updateCartUI();
+            }, 2000);
+        }
+
+        // --- UI Interactions ---
+        
+        // Toast Notifications
+        function showNotification(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            
+            let icon = 'fa-info-circle';
+            let colorClass = 'border-mystic-600 bg-mystic-800';
+            
+            if (type === 'success') { icon = 'fa-check-circle text-green-400'; colorClass = 'border-green-500/50 bg-mystic-800'; }
+            if (type === 'error') { icon = 'fa-exclamation-circle text-red-400'; colorClass = 'border-red-500/50 bg-mystic-800'; }
+            if (type === 'cart') { icon = 'fa-shopping-bag text-mystic-gold'; colorClass = 'border-mystic-gold/50 bg-mystic-900'; }
+
+            toast.className = `glass ${colorClass} text-white px-4 py-3 rounded-lg shadow-lg flex items-center space-x-3 transform transition-all duration-300 translate-y-full opacity-0 max-w-sm`;
+            toast.innerHTML = `
+                <i class="fas ${icon} text-lg"></i>
+                <p class="text-sm font-medium">${message}</p>
+            `;
+            
+            container.appendChild(toast);
+            
+            // Animate in
+            setTimeout(() => {
+                toast.classList.remove('translate-y-full', 'opacity-0');
+            }, 10);
+
+            // Remove after delay
+            setTimeout(() => {
+                toast.classList.add('translate-y-full', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Navbar Scroll Effect & Mobile Menu
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg', 'bg-mystic-900/90');
+                nav.classList.remove('bg-transparent');
+            } else {
+                nav.classList.remove('shadow-lg', 'bg-mystic-900/90');
+                nav.classList.add('bg-transparent');
+            }
+        });
+
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // --- Particle Background Canvas ---
+        function initParticles() {
+            const canvas = document.getElementById('particles-bg');
+            const ctx = canvas.getContext('2d');
+            
+            let width, height;
+            let particles = [];
+            
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            }
+            
+            window.addEventListener('resize', resize);
+            resize();
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.size = Math.random() * 2;
+                    this.speedX = Math.random() * 0.5 - 0.25;
+                    this.speedY = Math.random() * -0.5 - 0.1; // Float upwards mostly
+                    this.opacity = Math.random() * 0.5;
+                    // Colors between gold and purple
+                    this.color = Math.random() > 0.5 ? `rgba(255, 215, 0, ${this.opacity})` : `rgba(147, 112, 219, ${this.opacity})`;
+                }
+                
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    
+                    // Reset if out of bounds
+                    if (this.y < 0) {
+                        this.y = height;
+                        this.x = Math.random() * width;
+                    }
+                    if (this.x > width) this.x = 0;
+                    if (this.x < 0) this.x = width;
+                }
+                
+                draw() {
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+            
+            for (let i = 0; i < 150; i++) {
+                particles.push(new Particle());
+            }
+            
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                requestAnimationFrame(animate);
+            }
+            
+            animate();
+        }
+
+        // --- Generate Hero Image via API ---
+        async function generateHeroImage() {
+            const apiKey = ""; // Canvas handles API key internally
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image-preview:generateContent?key=${apiKey}`;
+            
+            // Description based on the user's prompt: Younger woman, gypsy clothes, candles, smoke, and cowrie shells (búzios).
+            const prompt = "A photorealistic portrait of an elegant, beautiful younger blonde woman (around 40 years old) looking directly at the camera. She is dressed in rich, vibrant gypsy fortune-teller clothing (deep purples, golds, layered fabrics, mystical jewelry). On the table in front of her are scattered cowrie shells (búzios) used for divination. She is surrounded by glowing lit candles with magical light. There is a mystical, swirling cinematic smoke effect around her. Dark, esoteric, magical atmosphere. High quality, studio lighting.";
+
+            const payload = {
+                contents: [{
+                    role: 'user',
+                    parts: [{ text: prompt }]
+                }],
+                generationConfig: {
+                    responseModalities: ['IMAGE'],
+                    imageConfig: { aspectRatio: "3:4" } // Portrait orientation
+                },
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const result = await response.json();
+                const part = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData);
+                
+                if (part) {
+                    const imageUrl = `data:${part.inlineData.mimeType};base64,${part.inlineData.data}`;
+                    const imgElement = document.getElementById('hero-generated-image');
+                    const loadingElement = document.getElementById('hero-img-loading');
+                    
+                    imgElement.src = imageUrl;
+                    imgElement.onload = () => {
+                        loadingElement.style.display = 'none';
+                        imgElement.classList.remove('opacity-0');
+                    };
+                } else {
+                    console.error("No image data returned from API.");
+                    document.getElementById('hero-img-loading').innerHTML = '<span class="text-red-400 text-sm p-4 text-center">A visão falhou. As brumas não permitiram ver a imagem.</span>';
+                }
+            } catch (error) {
+                console.error("Error generating image:", error);
+                document.getElementById('hero-img-loading').innerHTML = '<span class="text-red-400 text-sm p-4 text-center">Erro ao conjurar a imagem.</span>';
+            }
+        }
+
+        // Initialize everything on load
+        window.onload = () => {
+            renderProducts();
+            initParticles();
+            generateHeroImage();
+        };
+
+    </script>
+</body>
+</html>
