@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Odoya Rose - Servi&#231;os Esot&#233;ricos &amp; Oracle</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            mystic: {
+              deep: '#0A0015',
+              purple: '#1A0A2E',
+              violet: '#2D1B69',
+              amethyst: '#7B2FBE',
+              gold: '#D4A843',
+              brightGold: '#F0C75E',
+              silver: '#C0C0E0',
+              crimson: '#8B1A4A',
+              ember: '#E8732A',
+              moonlight: '#E8DFF5',
+              shadow: '#0D001A',
+              herbal: '#1B4332',
+              sage: '#A7C9A0',
+            }
+          },
+          fontFamily: {
+            decorative: ['Cinzel Decorative', 'serif'],
+            serif: ['Cormorant Garamond', 'serif'],
+            sans: ['Josefin Sans', 'sans-serif'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'glow': 'glow 3s ease-in-out infinite',
+            'sparkle': 'sparkle 2s ease-in-out infinite',
+            'smoke': 'smoke 8s ease-in-out infinite',
+            'rotate-slow': 'rotateSlow 20s linear infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+            glow: {
+              '0%, 100%': { textShadow: '0 0 10px rgba(212,168,67,0.3), 0 0 20px rgba(212,168,67,0.2)' },
+              '50%': { textShadow: '0 0 20px rgba(212,168,67,0.6), 0 0 40px rgba(212,168,67,0.4), 0 0 60px rgba(212,168,67,0.2)' },
+            },
+            sparkle: {
+              '0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
+              '50%': { opacity: '1', transform: 'scale(1.2)' },
+            },
+            smoke: {
+              '0%': { transform: 'translateY(0) scaleX(1)', opacity: '0' },
+              '15%': { opacity: '0.4' },
+              '50%': { transform: 'translateY(-120px) scaleX(1.5)', opacity: '0.2' },
+              '100%': { transform: 'translateY(-250px) scaleX(2)', opacity: '0' },
+            },
+            rotateSlow: {
+              '0%': { transform: 'rotate(0deg)' },
+              '100%': { transform: 'rotate(360deg)' },
+            },
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { scroll-behavior: smooth; }
+    body {
+      background: #0A0015;
+      color: #E8DFF5;
+      font-family: 'Cormorant Garamond', serif;
+      overflow-x: hidden;
+    }
+    .stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .star {
+      position: absolute;
+      width: 2px; height: 2px;
+      background: #fff;
+      border-radius: 50%;
+      animation: sparkle 3s ease-in-out infinite;
+    }
+    .section-divider {
+      position: relative;
+      height: 80px;
+      overflow: hidden;
+    }
+    .section-divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #D4A843, transparent);
+    }
+    .section-divider .symbol {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 28px;
+      color: #D4A843;
+      text-shadow: 0 0 15px rgba(212,168,67,0.5);
+    }
+    .card-mystic {
+      background: linear-gradient(135deg, rgba(45,27,105,0.4), rgba(26,10,46,0.6));
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212,168,67,0.2);
+      transition: all 0.4s ease;
+    }
+    .card-mystic:hover {
+      border-color: rgba(212,168,67,0.6);
+      box-shadow: 0 0 30px rgba(123,47,190,0.3), 0 0 60px rgba(212,168,67,0.1);
+      transform: translateY(-5px);
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, #D4A843, #F0C75E, #D4A843);
+      background-size: 200% 200%;
+      color: #0A0015;
+      font-family: 'Cinzel Decorative', serif;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-gold:hover {
+      background-position: right center;
+      box-shadow: 0 0 25px rgba(212,168,67,0.5);
+      transform: translateY(-2px);
+    }
+    .btn-gold::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(transparent, rgba(255,255,255,0.1), transparent);
+      transform: rotate(45deg);
+      animation: shimmer 3s infinite;
+    }
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) rotate(45deg); }
+    }
+    .nav-blur {
+      background: rgba(10,0,21,0.85);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(212,168,67,0.15);
+    }
+    .text-gold-gradient {
+      background: linear-gradient(135deg, #D4A843, #F0C75E, #D4A843);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .purple-glow {
+      box-shadow: 0 0 40px rgba(123,47,190,0.3);
+    }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0A0015; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(#7B2FBE, #D4A843); border-radius: 4px; }
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .cart-badge {
+      position: absolute;
+      top: -8px; right: -8px;
+      background: #E8732A;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Josefin Sans', sans-serif;
+    }
+    .incense-smoke {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 60px;
+      background: linear-gradient(to top, rgba(167,201,160,0.3), transparent);
+      filter: blur(4px);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Stars Background -->
+  <div class="stars" id="stars"></div>
+
+  <!-- Navigation -->
+  <nav class="nav-blur fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="#hero" class="flex items-center gap-3">
+        <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="45" stroke="#D4A843" stroke-width="2" fill="none"/>
+          <path d="M50 10 A35 35 0 0 0 50 80 A25 25 0 0 1 50 10Z" fill="#D4A843"/>
+          <circle cx="38" cy="35" r="2" fill="#0A0015" opacity="0.5"/>
+          <circle cx="42" cy="50" r="1.5" fill="#0A0015" opacity="0.4"/>
+          <circle cx="35" cy="62" r="2.5" fill="#0A0015" opacity="0.3"/>
+        </svg>
+        <span class="font-decorative text-lg md:text-xl text-gold-gradient">Odoya Rose</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#servicos" class="font-sans text-sm tracking-wider text-mystic-silver hover:text-mystic-gold transition-colors cursor-pointer">Servi&#231;os</a>
+        <a href="#loja" class="font-sans text-sm tracking-wider text-mystic-silver hover:text-mystic-gold transition-colors cursor-pointer">Loja</a>
+        <a href="#depoimentos" class="font-sans text-sm tracking-wider text-mystic-silver hover:text-mystic-gold transition-colors cursor-pointer">Depoimentos</a>
+        <a href="#contato" class="font-sans text-sm tracking-wider text-mystic-silver hover:text-mystic-gold transition-colors cursor-pointer">Contato</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <button onclick="toggleCart()" class="relative cursor-pointer p-2 hover:bg-mystic-violet/30 rounded-full transition-colors" aria-label="Carrinho de compras">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="1.5">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
+        <button onclick="toggleMobileMenu()" class="md:hidden cursor-pointer p-2" aria-label="Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 border-t border-mystic-gold/20 pt-4">
+      <div class="flex flex-col gap-4 px-4">
+        <a href="#servicos" onclick="closeMobileMenu()" class="font-sans text-sm tracking-wider text-mystic-silver hover:text-mystic-gold transition-colors cursor-pointer">Servi&#231;os</a>
+        <a href="#loja" onclick="closeMobileMenu()" class="font-sans text-sm tracking-wider text-mystic-silver hover:text-mystic-gold transition-colors cursor-pointer">Loja</a>
+        <a href="#depoimentos" onclick="closeMobileMenu()" class="font-sans text-sm tracking-wider text-mystic-silver hover:text-mystic-gold transition-colors cursor-pointer">Depoimentos</a>
+        <a href="#contato" onclick="closeMobileMenu()" class="font-sans text-sm tracking-wider text-mystic-silver hover:text-mystic-gold transition-colors cursor-pointer">Contato</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Cart Sidebar -->
+  <div id="cartSidebar" class="fixed top-0 right-0 h-full w-full md:w-96 bg-mystic-shadow/95 backdrop-blur-xl border-l border-mystic-gold/20 z-[60] transform translate-x-full transition-transform duration-300">
+    <div class="p-6 h-full flex flex-col">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="font-decorative text-xl text-mystic-gold">Seu Carrinho</h3>
+        <button onclick="toggleCart()" class="cursor-pointer p-1 hover:text-mystic-gold transition-colors" aria-label="Fechar carrinho">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div id="cartItems" class="flex-1 overflow-y-auto space-y-4">
+        <p class="text-mystic-silver/60 text-center font-serif italic mt-12">O mist&#234;rio ainda n&#227;o revelou seus itens...</p>
+      </div>
+      <div class="border-t border-mystic-gold/20 pt-4 mt-4">
+        <div class="flex justify-between items-center mb-4">
+          <span class="font-sans text-mystic-silver">Total:</span>
+          <span class="font-decorative text-xl text-mystic-gold" id="cartTotal">R$ 0,00</span>
+        </div>
+        <button onclick="openCheckout()" class="btn-gold block text-center py-3 rounded-lg cursor-pointer">Finalizar Compra</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <div class="absolute inset-0 bg-gradient-to-b from-mystic-deep via-mystic-purple to-mystic-deep"></div>
+    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 20% 50%, rgba(123,47,190,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 30%, rgba(212,168,67,0.2) 0%, transparent 40%), radial-gradient(circle at 50% 80%, rgba(139,26,74,0.2) 0%, transparent 50%);"></div>
+
+    <div class="absolute bottom-20 left-10 md:left-20 animate-float">
+      <div class="incense-smoke"></div>
+      <svg width="30" height="40" viewBox="0 0 30 40" fill="none">
+        <ellipse cx="15" cy="35" rx="12" ry="4" fill="#8B1A4A"/>
+        <rect x="8" y="15" width="14" height="20" rx="2" fill="#8B1A4A"/>
+        <ellipse cx="15" cy="15" rx="7" ry="3" fill="#D4A843"/>
+        <circle cx="15" cy="12" r="2" fill="#E8732A"/>
+      </svg>
+    </div>
+    <div class="absolute bottom-20 right-10 md:right-20 animate-float" style="animation-delay: -3s;">
+      <div class="incense-smoke"></div>
+      <svg width="30" height="40" viewBox="0 0 30 40" fill="none">
+        <ellipse cx="15" cy="35" rx="12" ry="4" fill="#8B1A4A"/>
+        <rect x="8" y="15" width="14" height="20" rx="2" fill="#8B1A4A"/>
+        <ellipse cx="15" cy="15" rx="7" ry="3" fill="#D4A843"/>
+        <circle cx="15" cy="12" r="2" fill="#E8732A"/>
+      </svg>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-12 items-center">
+      <div class="text-center md:text-left">
+        <p class="font-sans text-sm tracking-[0.3em] text-mystic-gold/70 mb-4 uppercase">Os Arcanos Falam Por Voc&#234;</p>
+        <h1 class="font-decorative text-4xl md:text-6xl lg:text-7xl leading-tight mb-6">
+          <span class="text-gold-gradient animate-glow">Odoya</span><br>
+          <span class="text-mystic-moonlight">Rose</span>
+        </h1>
+        <p class="font-serif text-lg md:text-xl text-mystic-silver/80 leading-relaxed mb-8 max-w-lg">
+          Mergulhe no universo dos ensinamentos ancestrais. Tarot, rituais sagrados guiados pela m&#227;gica de uma verdadeira cigana vidente.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+          <a href="#servicos" class="btn-gold px-8 py-4 rounded-lg text-sm tracking-wider cursor-pointer">Descubra Seu Destino</a>
+          <a href="#loja" class="border border-mystic-gold/40 text-mystic-gold px-8 py-4 rounded-lg text-sm tracking-wider hover:bg-mystic-gold/10 transition-all cursor-pointer font-sans">Visitar Loja M&#225;gica</a>
+        </div>
+        <div class="flex items-center gap-6 mt-10 justify-center md:justify-start">
+          <div class="text-center">
+            <p class="font-decorative text-2xl text-mystic-gold">2.500+</p>
+            <p class="font-sans text-xs text-mystic-silver/50">Almas Guiadas</p>
+          </div>
+          <div class="w-px h-10 bg-mystic-gold/20"></div>
+          <div class="text-center">
+            <p class="font-decorative text-2xl text-mystic-gold">15</p>
+            <p class="font-sans text-xs text-mystic-silver/50">Anos de Vidente</p>
+          </div>
+          <div class="w-px h-10 bg-mystic-gold/20"></div>
+          <div class="text-center">
+            <p class="font-decorative text-2xl text-mystic-gold">99%</p>
+            <p class="font-sans text-xs text-mystic-silver/50">Satisfa&#231;&#227;o</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-center">
+        <div class="relative">
+          <div class="absolute inset-0 rounded-full bg-gradient-to-br from-mystic-amethyst/20 via-transparent to-mystic-gold/10 blur-3xl animate-glow"></div>
+          <div class="relative w-72 h-96 md:w-96 md:h-[28rem] rounded-2xl overflow-hidden border-2 border-mystic-gold/30 purple-glow">
+            <div class="absolute inset-0 bg-gradient-to-b from-mystic-purple/80 via-mystic-violet/60 to-mystic-herbal/40"></div>
+            <div class="absolute inset-0 flex items-center justify-center opacity-10">
+              <svg width="300" height="300" viewBox="0 0 300 300" fill="none" class="animate-rotate-slow">
+                <circle cx="150" cy="150" r="140" stroke="#D4A843" stroke-width="0.5"/>
+                <circle cx="150" cy="150" r="120" stroke="#7B2FBE" stroke-width="0.5"/>
+                <circle cx="150" cy="150" r="100" stroke="#D4A843" stroke-width="0.5"/>
+                <circle cx="150" cy="150" r="80" stroke="#7B2FBE" stroke-width="0.5"/>
+                <path d="M150 30 L150 270 M30 150 L270 150" stroke="#D4A843" stroke-width="0.3"/>
+                <path d="M65 65 L235 235 M235 65 L65 235" stroke="#7B2FBE" stroke-width="0.3"/>
+              </svg>
+            </div>
+            <div class="absolute inset-0 flex items-end justify-center">
+              <svg viewBox="0 0 400 500" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="dressGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#1B4332"/>
+                    <stop offset="50%" style="stop-color:#2D1B69"/>
+                    <stop offset="100%" style="stop-color:#0A0015"/>
+                  </linearGradient>
+                  <linearGradient id="scarfGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#8B1A4A"/>
+                    <stop offset="100%" style="stop-color:#D4A843"/>
+                  </linearGradient>
+                  <radialGradient id="faceGlow" cx="50%" cy="40%">
+                    <stop offset="0%" style="stop-color:#F0C75E;stop-opacity:0.3"/>
+                    <stop offset="100%" style="stop-color:#F0C75E;stop-opacity:0"/>
+                  </radialGradient>
+                </defs>
+                <path d="M120 250 Q100 300 60 500 L340 500 Q300 300 280 250 Z" fill="url(#dressGrad)" opacity="0.9"/>
+                <path d="M130 350 Q200 370 270 350" stroke="#D4A843" stroke-width="1" fill="none" opacity="0.5"/>
+                <path d="M120 400 Q200 420 280 400" stroke="#D4A843" stroke-width="1" fill="none" opacity="0.4"/>
+                <path d="M110 450 Q200 470 290 450" stroke="#D4A843" stroke-width="1" fill="none" opacity="0.3"/>
+                <path d="M140 220 Q120 250 100 320 Q130 280 160 260 Z" fill="url(#scarfGrad)" opacity="0.7"/>
+                <path d="M260 220 Q280 250 300 320 Q270 280 240 260 Z" fill="url(#scarfGrad)" opacity="0.7"/>
+                <ellipse cx="200" cy="180" rx="55" ry="65" fill="#C68642" opacity="0.9"/>
+                <ellipse cx="200" cy="175" rx="80" ry="80" fill="url(#faceGlow)"/>
+                <path d="M145 160 Q130 120 160 100 Q180 90 200 95 Q220 90 240 100 Q270 120 255 160 Q260 180 250 200 Q240 180 235 160 Q220 140 200 135 Q180 140 165 160 Q160 180 150 200 Q140 180 145 160Z" fill="#1a0a00" opacity="0.9"/>
+                <path d="M140 155 Q135 120 160 100 Q180 85 200 88 Q220 85 240 100 Q265 120 260 155 Q255 140 240 130 Q220 118 200 115 Q180 118 160 130 Q145 140 140 155Z" fill="url(#scarfGrad)" opacity="0.85"/>
+                <circle cx="200" cy="115" r="8" fill="#D4A843" opacity="0.6"/>
+                <ellipse cx="178" cy="175" rx="10" ry="6" fill="white"/>
+                <ellipse cx="222" cy="175" rx="10" ry="6" fill="white"/>
+                <circle cx="180" cy="175" r="4" fill="#2D1B69"/>
+                <circle cx="224" cy="175" r="4" fill="#2D1B69"/>
+                <circle cx="181" cy="174" r="1.5" fill="#0A0015"/>
+                <circle cx="225" cy="174" r="1.5" fill="#0A0015"/>
+                <path d="M165 165 Q178 158 192 163" stroke="#1a0a00" stroke-width="2" fill="none"/>
+                <path d="M208 163 Q222 158 235 165" stroke="#1a0a00" stroke-width="2" fill="none"/>
+                <path d="M198 180 Q195 195 190 200 Q195 203 200 200 Q205 203 210 200 Q205 195 202 180" fill="#B87333" opacity="0.7"/>
+                <path d="M185 212 Q195 208 200 210 Q205 208 215 212 Q205 220 200 218 Q195 220 185 212Z" fill="#8B1A4A" opacity="0.8"/>
+                <path d="M188 215 Q200 225 212 215" stroke="#6B3A2A" stroke-width="1" fill="none" opacity="0.5"/>
+                <circle cx="145" cy="195" r="4" fill="#D4A843" opacity="0.8"/>
+                <circle cx="145" cy="205" r="2" fill="#D4A843" opacity="0.6"/>
+                <circle cx="255" cy="195" r="4" fill="#D4A843" opacity="0.8"/>
+                <circle cx="255" cy="205" r="2" fill="#D4A843" opacity="0.6"/>
+                <path d="M170 235 Q200 250 230 235" stroke="#D4A843" stroke-width="1.5" fill="none"/>
+                <circle cx="200" cy="248" r="5" fill="#D4A843" opacity="0.7"/>
+                <path d="M175 245 Q200 258 225 245" stroke="#D4A843" stroke-width="1" fill="none" opacity="0.5"/>
+                <ellipse cx="160" cy="310" rx="20" ry="15" fill="#C68642" opacity="0.8" transform="rotate(-15 160 310)"/>
+                <ellipse cx="240" cy="310" rx="20" ry="15" fill="#C68642" opacity="0.8" transform="rotate(15 240 310)"/>
+                <circle cx="200" cy="310" r="30" fill="url(#faceGlow)" stroke="#D4A843" stroke-width="1" opacity="0.8"/>
+                <circle cx="200" cy="310" r="25" fill="#2D1B69" opacity="0.4"/>
+                <circle cx="195" cy="305" r="5" fill="white" opacity="0.3"/>
+                <circle cx="155" cy="295" r="8" fill="none" stroke="#D4A843" stroke-width="1" opacity="0.6"/>
+                <circle cx="245" cy="295" r="8" fill="none" stroke="#D4A843" stroke-width="1" opacity="0.6"/>
+                <text x="80" y="150" fill="#D4A843" font-size="16" opacity="0.4" font-family="serif">&#9876;</text>
+                <text x="310" y="170" fill="#7B2FBE" font-size="14" opacity="0.4" font-family="serif">&#9791;</text>
+                <text x="100" y="350" fill="#D4A843" font-size="12" opacity="0.3" font-family="serif">&#9873;</text>
+                <text x="290" y="380" fill="#7B2FBE" font-size="12" opacity="0.3" font-family="serif">&#9830;</text>
+              </svg>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-mystic-deep/60 via-transparent to-mystic-deep/30"></div>
+            <div class="absolute bottom-4 left-0 right-0 text-center">
+              <p class="font-decorative text-lg md:text-xl text-gold-gradient drop-shadow-lg">Odoya Rose</p>
+              <p class="font-serif text-xs md:text-sm text-mystic-silver/70 italic">A Vidente cigana</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-float">
+      <svg width="24" height="40" viewBox="0 0 24 40" fill="none">
+        <rect x="1" y="1" width="22" height="38" rx="11" stroke="#D4A843" stroke-width="1.5" opacity="0.5"/>
+        <circle cx="12" cy="12" r="3" fill="#D4A843" opacity="0.8">
+          <animate attributeName="cy" values="12;24;12" dur="2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite"/>
+        </circle>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="section-divider"><span class="symbol">&#9876;</span></div>
+
+  <!-- ==================== SERVICES SECTION ==================== -->
+  <section id="servicos" class="relative py-20 md:py-32">
+    <div class="absolute inset-0 bg-gradient-to-b from-mystic-deep via-mystic-purple/30 to-mystic-deep"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center mb-16">
+        <p class="font-sans text-sm tracking-[0.3em] text-mystic-gold/60 mb-3 uppercase">O Que os Arcanos Oferecem</p>
+        <h2 class="font-decorative text-3xl md:text-5xl text-gold-gradient mb-6">Servi&#231;os Esot&#233;ricos</h2>
+        <p class="font-serif text-lg text-mystic-silver/70 max-w-2xl mx-auto">
+          Cada servi&#231;o &#233; uma porta para o desconhecido. Escolha seu caminho e permita que as for&#231;as ancestrais guiem seus passos.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+
+        <!-- Tarot -->
+        <div class="card-mystic rounded-2xl p-6 md:p-8">
+          <div class="flex items-center gap-3 mb-4">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <rect x="5" y="5" width="30" height="40" rx="3" stroke="#D4A843" stroke-width="1.5" fill="rgba(212,168,67,0.1)"/>
+              <circle cx="20" cy="18" r="6" stroke="#D4A843" stroke-width="1" fill="none"/>
+              <path d="M20 12 L20 8 M20 28 L20 32 M14 20 L10 20 M26 20 L30 20" stroke="#D4A843" stroke-width="0.8"/>
+            </svg>
+            <h3 class="font-decorative text-xl text-mystic-gold">Tarot de Marselha</h3>
+          </div>
+          <p class="font-serif text-mystic-silver/70 mb-4 leading-relaxed">
+            Leitura completa dos 78 arcanos. Descubra respostas sobre amor, dinheiro, sa&#250;de e esp&#237;rito. Cada carta revela um segredo do seu destino.
+          </p>
+          <div class="flex items-center justify-between mt-6">
+            <span class="font-decorative text-2xl text-mystic-brightGold">R$ 127,00</span>
+            <button onclick="addToCart('Tarot de Marselha', 127, 'tarot')" class="btn-gold px-5 py-2 rounded-lg text-xs tracking-wider cursor-pointer">Consultar</button>
+          </div>
+        </div>
+
+        <!-- Limpeza Energética -->
+        <div class="card-mystic rounded-2xl p-6 md:p-8">
+          <div class="flex items-center gap-3 mb-4">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <path d="M20 8 Q15 15 12 22 Q10 28 20 35 Q30 28 28 22 Q25 15 20 8Z" stroke="#A7C9A0" stroke-width="1.2" fill="rgba(27,67,50,0.3)"/>
+              <path d="M17 20 Q20 15 23 20 Q20 25 17 20Z" fill="#A7C9A0" opacity="0.4"/>
+            </svg>
+            <h3 class="font-decorative text-xl text-mystic-gold">Limpeza Energ&#233;tica</h3>
+          </div>
+          <p class="font-serif text-mystic-silver/70 mb-4 leading-relaxed">
+            Ritual de purifica&#231;&#227;o com ervas sagradas e defuma&#231;&#227;o. Remova bloqueios energ&#233;ticos e abra caminhos para novas energias na sua vida.
+          </p>
+          <div class="flex items-center justify-between mt-6">
+            <span class="font-decorative text-2xl text-mystic-brightGold">R$ 87,00</span>
+            <button onclick="addToCart('Limpeza Energética', 87, 'limpeza')" class="btn-gold px-5 py-2 rounded-lg text-xs tracking-wider cursor-pointer">Agendar</button>
+          </div>
+        </div>
+
+        <!-- Ritual do Amor -->
+        <div class="card-mystic rounded-2xl p-6 md:p-8">
+          <div class="flex items-center gap-3 mb-4">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <path d="M12 15 Q8 8 15 8 Q20 8 20 13 Q20 8 25 8 Q32 8 28 15 Q20 25 12 15Z" stroke="#8B1A4A" stroke-width="1.2" fill="rgba(139,26,74,0.2)"/>
+              <path d="M18 28 Q20 35 22 28" stroke="#D4A843" stroke-width="1" fill="none"/>
+            </svg>
+            <h3 class="font-decorative text-xl text-mystic-gold">Ritual do Amor</h3>
+          </div>
+          <p class="font-serif text-mystic-silver/70 mb-4 leading-relaxed">
+            Trabalho esot&#233;rico dedicado ao amor. Odoya Rose realiza rituais poderosos para atrair, fortalecer e proteger o amor na sua vida.
+          </p>
+          <div class="flex items-center justify-between mt-6">
+            <span class="font-decorative text-2xl text-mystic-brightGold">R$ 167,00</span>
+            <button onclick="addToCart('Ritual do Amor', 167, 'amor')" class="btn-gold px-5 py-2 rounded-lg text-xs tracking-wider cursor-pointer">Consultar</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="section-divider"><span class="symbol">&#9791;</span></div>
+
+  <!-- ==================== SHOP SECTION ==================== -->
+  <section id="loja" class="relative py-20 md:py-32">
+    <div class="absolute inset-0 bg-gradient-to-b from-mystic-deep via-mystic-shadow to-mystic-deep"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center mb-16">
+        <p class="font-sans text-sm tracking-[0.3em] text-mystic-gold/60 mb-3 uppercase">Artefatos Sagrados</p>
+        <h2 class="font-decorative text-3xl md:text-5xl text-gold-gradient mb-6">Loja M&#225;gica</h2>
+        <p class="font-serif text-lg text-mystic-silver/70 max-w-2xl mx-auto">
+          Produtos consagrados e artefatos energizados para fortalecer sua pr&#225;tica espiritual e proteger seu caminho.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <div class="card-mystic rounded-2xl overflow-hidden group">
+          <div class="relative h-48 bg-gradient-to-br from-mystic-violet/30 to-mystic-purple/50 flex items-center justify-center">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+              <rect x="15" y="10" width="50" height="60" rx="3" stroke="#D4A843" stroke-width="1.5" fill="rgba(212,168,67,0.05)"/>
+              <circle cx="40" cy="35" r="10" stroke="#7B2FBE" stroke-width="1" fill="rgba(123,47,190,0.2)"/>
+              <path d="M35 35 L40 30 L45 35 L40 40Z" fill="#D4A843" opacity="0.5"/>
+              <text x="40" y="55" text-anchor="middle" fill="#D4A843" font-size="8" opacity="0.6">&#9876;</text>
+            </svg>
+            <div class="absolute top-3 right-3 bg-mystic-ember text-white text-xs font-sans font-bold px-2 py-1 rounded-full">POPULAR</div>
+          </div>
+          <div class="p-5">
+            <h4 class="font-decorative text-mystic-gold mb-1">Baralho Tarot Vintage</h4>
+            <p class="font-serif text-sm text-mystic-silver/60 mb-3">Baralho de tarot consagrado com artes originais de Marselha.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-decorative text-lg text-mystic-brightGold">R$ 89,90</span>
+              <button onclick="addToCart('Baralho Tarot Vintage', 89.90, 'tarot-vintage')" class="btn-gold px-4 py-2 rounded-lg text-xs cursor-pointer">Comprar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-mystic rounded-2xl overflow-hidden group">
+          <div class="relative h-48 bg-gradient-to-br from-mystic-herbal/30 to-mystic-purple/50 flex items-center justify-center">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+              <path d="M40 15 Q30 25 25 40 Q20 55 40 65 Q60 55 55 40 Q50 25 40 15Z" stroke="#A7C9A0" stroke-width="1.5" fill="rgba(27,67,50,0.2)"/>
+              <circle cx="40" cy="40" r="5" fill="#A7C9A0" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="p-5">
+            <h4 class="font-decorative text-mystic-gold mb-1">Kit Ervas Sagradas</h4>
+            <p class="font-serif text-sm text-mystic-silver/60 mb-3">Mix de 7 ervas para defumação e banhos de descarrego.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-decorative text-lg text-mystic-brightGold">R$ 47,90</span>
+              <button onclick="addToCart('Kit Ervas Sagradas', 47.90, 'ervas')" class="btn-gold px-4 py-2 rounded-lg text-xs cursor-pointer">Comprar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-mystic rounded-2xl overflow-hidden group">
+          <div class="relative h-48 bg-gradient-to-br from-mystic-crimson/30 to-mystic-purple/50 flex items-center justify-center">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+              <circle cx="40" cy="40" r="20" stroke="#D4A843" stroke-width="1.5" fill="rgba(139,26,74,0.1)"/>
+              <circle cx="40" cy="40" r="12" stroke="#8B1A4A" stroke-width="1" fill="rgba(139,26,74,0.2)"/>
+              <circle cx="40" cy="40" r="5" fill="#D4A843" opacity="0.4"/>
+            </svg>
+            <div class="absolute top-3 right-3 bg-mystic-amethyst text-white text-xs font-sans font-bold px-2 py-1 rounded-full">NOVO</div>
+          </div>
+          <div class="p-5">
+            <h4 class="font-decorative text-mystic-gold mb-1">Pendente Olho de Sagrado</h4>
+            <p class="font-serif text-sm text-mystic-silver/60 mb-3">Pingente em prata com olho de sagrado energizado.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-decorative text-lg text-mystic-brightGold">R$ 129,90</span>
+              <button onclick="addToCart('Pendente Olho de Sagrado', 129.90, 'pendente')" class="btn-gold px-4 py-2 rounded-lg text-xs cursor-pointer">Comprar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-mystic rounded-2xl overflow-hidden group">
+          <div class="relative h-48 bg-gradient-to-br from-mystic-violet/40 to-mystic-purple/50 flex items-center justify-center">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+              <rect x="20" y="25" width="40" height="30" rx="2" stroke="#D4A843" stroke-width="1.5" fill="rgba(123,47,190,0.1)"/>
+              <path d="M25 25 L25 20 Q40 10 55 20 L55 25" stroke="#7B2FBE" stroke-width="1" fill="none"/>
+              <line x1="35" y1="35" x2="45" y2="35" stroke="#D4A843" stroke-width="1" opacity="0.5"/>
+              <line x1="35" y1="42" x2="45" y2="42" stroke="#D4A843" stroke-width="1" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="p-5">
+            <h4 class="font-decorative text-mystic-gold mb-1">Livro de Sombras</h4>
+            <p class="font-serif text-sm text-mystic-silver/60 mb-3">Caderno artesanal em couro para registrar suas visões e rituais.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-decorative text-lg text-mystic-brightGold">R$ 67,90</span>
+              <button onclick="addToCart('Livro de Sombras', 67.90, 'livro')" class="btn-gold px-4 py-2 rounded-lg text-xs cursor-pointer">Comprar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-mystic rounded-2xl overflow-hidden group">
+          <div class="relative h-48 bg-gradient-to-br from-mystic-gold/20 to-mystic-purple/50 flex items-center justify-center">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+              <ellipse cx="40" cy="50" rx="18" ry="8" stroke="#D4A843" stroke-width="1" fill="rgba(212,168,67,0.1)"/>
+              <path d="M25 50 Q25 25 40 20 Q55 25 55 50" stroke="#D4A843" stroke-width="1.5" fill="rgba(212,168,67,0.05)"/>
+              <path d="M38 30 Q40 25 42 30 Q40 35 38 30Z" fill="#D4A843" opacity="0.3"/>
+            </svg>
+          </div>
+          <div class="p-5">
+            <h4 class="font-decorative text-mystic-gold mb-1">Vela Ritual 7 Velas</h4>
+            <p class="font-serif text-sm text-mystic-silver/60 mb-3">Kit com 7 velas coloridas para rituais de cada dia da semana.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-decorative text-lg text-mystic-brightGold">R$ 54,90</span>
+              <button onclick="addToCart('Vela Ritual 7 Velas', 54.90, 'velas')" class="btn-gold px-4 py-2 rounded-lg text-xs cursor-pointer">Comprar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-mystic rounded-2xl overflow-hidden group">
+          <div class="relative h-48 bg-gradient-to-br from-mystic-amber/20 to-mystic-purple/50 flex items-center justify-center">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+              <circle cx="30" cy="40" r="12" stroke="#D4A843" stroke-width="1" fill="rgba(232,115,42,0.1)"/>
+              <circle cx="50" cy="40" r="12" stroke="#7B2FBE" stroke-width="1" fill="rgba(123,47,190,0.1)"/>
+              <path d="M35 30 L45 30" stroke="#D4A843" stroke-width="0.8" opacity="0.5"/>
+              <path d="M35 50 L45 50" stroke="#7B2FBE" stroke-width="0.8" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="p-5">
+            <h4 class="font-decorative text-mystic-gold mb-1">Conjunto de Runas</h4>
+            <p class="font-serif text-sm text-mystic-silver/60 mb-3">24 runas em pedra natural com bolsa de veludo consagrada.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-decorative text-lg text-mystic-brightGold">R$ 79,90</span>
+              <button onclick="addToCart('Conjunto de Runas', 79.90, 'runas-kit')" class="btn-gold px-4 py-2 rounded-lg text-xs cursor-pointer">Comprar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-mystic rounded-2xl overflow-hidden group">
+          <div class="relative h-48 bg-gradient-to-br from-mystic-sage/20 to-mystic-purple/50 flex items-center justify-center">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+              <path d="M40 15 L45 30 L60 30 L48 40 L52 55 L40 45 L28 55 L32 40 L20 30 L35 30Z" stroke="#A7C9A0" stroke-width="1.2" fill="rgba(167,201,160,0.1)"/>
+            </svg>
+          </div>
+          <div class="p-5">
+            <h4 class="font-decorative text-mystic-gold mb-1">Amuleto Estrela 8 Pontas</h4>
+            <p class="font-serif text-sm text-mystic-silver/60 mb-3">Amuleto de proteção energizado com ritual completo da Fortuna.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-decorative text-lg text-mystic-brightGold">R$ 99,90</span>
+              <button onclick="addToCart('Amuleto Estrela 8 Pontas', 99.90, 'amuleto')" class="btn-gold px-4 py-2 rounded-lg text-xs cursor-pointer">Comprar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-mystic rounded-2xl overflow-hidden group">
+          <div class="relative h-48 bg-gradient-to-br from-mystic-violet/40 to-mystic-purple/50 flex items-center justify-center">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+              <rect x="20" y="20" width="40" height="40" rx="20" stroke="#D4A843" stroke-width="1.5" fill="rgba(123,47,190,0.1)"/>
+              <circle cx="40" cy="40" r="8" stroke="#7B2FBE" stroke-width="1" fill="rgba(123,47,190,0.3)"/>
+              <circle cx="40" cy="40" r="3" fill="#D4A843" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="p-5">
+            <h4 class="font-decorative text-mystic-gold mb-1">Esfera de Cristal Quartzo</h4>
+            <p class="font-serif text-sm text-mystic-silver/60 mb-3">Esfera de quartzo rosa polido para meditação e leitura.</p>
+            <div class="flex items-center justify-between">
+              <span class="font-decorative text-lg text-mystic-brightGold">R$ 189,90</span>
+              <button onclick="addToCart('Esfera de Cristal Quartzo', 189.90, 'esfera')" class="btn-gold px-4 py-2 rounded-lg text-xs cursor-pointer">Comprar</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="section-divider"><span class="symbol">&#9873;</span></div>
+
+  <!-- ==================== TESTIMONIALS SECTION ==================== -->
+  <section id="depoimentos" class="relative py-20 md:py-32">
+    <div class="absolute inset-0 bg-gradient-to-b from-mystic-deep via-mystic-purple/20 to-mystic-deep"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center mb-16">
+        <p class="font-sans text-sm tracking-[0.3em] text-mystic-gold/60 mb-3 uppercase">Vozes do Destino</p>
+        <h2 class="font-decorative text-3xl md:text-5xl text-gold-gradient mb-6">Depoimentos</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+        <div class="card-mystic rounded-2xl p-6 md:p-8">
+          <div class="flex items-center gap-1 mb-4">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#D4A843"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#D4A843"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#D4A843"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#D4A843"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#D4A843"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+          </div>
+          <p class="font-serif text-mystic-silver/80 italic mb-6 leading-relaxed">
+            "A leitura de tarot da Odoya Rose mudou completamente minha perspectiva. Ela acertou situa&#231;&#245;es que nem eu sabia que estavam acontecendo. Recomendo de olhos fechados!"
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-mystic-amethyst to-mystic-gold flex items-center justify-center font-decorative text-mystic-deep font-bold">M</div>
+            <div>
+              <p class="font-sans text-sm text-mystic-gold">Maria S.</p>
+              <p class="font-sans text-xs text-mystic-silver/50">Leitura de Tarot</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-mystic rounded-2xl p-6 md:p-8">
+          <div class="flex items-center gap-1 mb-4">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#D4A843"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#D4A843"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#D4A843"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#D4A843"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#D4A843"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+          </div>
+          <p class="font-serif text-mystic-silver/80 italic mb-6 leading-relaxed">
+            "Comprei o baralho consagrado e o kit de ervas. A qualidade &#233; impressionante! Senti a energia dos produtos assim que recebi. A Fortuna &#233; uma verdadeira mestria."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-mystic-herbal to-mystic-sage flex items-center justify-center font-decorative text-white font-bold">R</div>
+            <div>
+              <p class="font-sans text-sm text-mystic-gold">Ricardo P.</p>
+              <p class="font-sans text-xs text-mystic-silver/50">Compra na Loja</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-mystic rounded-2xl p-6 md:p-8">
+          <div class="flex items-center gap-1 mb-4">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#D4A843"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#D4A843"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#D4A843"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#D4A843"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#D4A843"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+          </div>
+          <p class="font-serif text-mystic-silver/80 italic mb-6 leading-relaxed">
+            "O ritual do amor funcionou. Em poucas semanas meu relacionamento voltou a florir. A Fortuna tem um dom verdadeiro de conectar com as energias do universo."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-mystic-crimson to-mystic-ember flex items-center justify-center font-decorative text-white font-bold">A</div>
+            <div>
+              <p class="font-sans text-sm text-mystic-gold">Ana C.</p>
+              <p class="font-sans text-xs text-mystic-silver/50">Ritual do Amor</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="section-divider"><span class="symbol">&#9792;</span></div>
+
+  <!-- ==================== CONTACT / CTA SECTION ==================== -->
+  <section id="contato" class="relative py-20 md:py-32">
+    <div class="absolute inset-0 bg-gradient-to-b from-mystic-deep via-mystic-purple/30 to-mystic-deep"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-4 md:px-8 text-center">
+      <h2 class="font-decorative text-3xl md:text-5xl text-gold-gradient mb-6">As Estrelas Chamam Voc&#234;</h2>
+      <p class="font-serif text-lg text-mystic-silver/70 mb-10 max-w-2xl mx-auto">
+        N&#227;o ignore os sinais. Entre em contato e descubra o que o universo preparou para voc&#234.
+      </p>
+
+      <div class="card-mystic rounded-2xl p-8 md:p-12 max-w-xl mx-auto">
+        <form onsubmit="handleSubmit(event)" class="space-y-6">
+          <div>
+            <label for="name" class="block font-sans text-sm text-mystic-gold mb-2">Seu Nome</label>
+            <input type="text" id="name" required class="w-full bg-mystic-deep/50 border border-mystic-gold/20 rounded-lg px-4 py-3 text-mystic-moonlight font-serif placeholder-mystic-silver/30 focus:border-mystic-gold/50 focus:outline-none focus:ring-1 focus:ring-mystic-gold/30 transition-all" placeholder="Digite seu nome...">
+          </div>
+          <div>
+            <label for="email" class="block font-sans text-sm text-mystic-gold mb-2">Seu E-mail</label>
+            <input type="email" id="email" required class="w-full bg-mystic-deep/50 border border-mystic-gold/20 rounded-lg px-4 py-3 text-mystic-moonlight font-serif placeholder-mystic-silver/30 focus:border-mystic-gold/50 focus:outline-none focus:ring-1 focus:ring-mystic-gold/30 transition-all" placeholder="seu@email.com">
+          </div>
+          <div>
+            <label for="message" class="block font-sans text-sm text-mystic-gold mb-2">Sua Mensagem</label>
+            <textarea id="message" rows="4" class="w-full bg-mystic-deep/50 border border-mystic-gold/20 rounded-lg px-4 py-3 text-mystic-moonlight font-serif placeholder-mystic-silver/30 focus:border-mystic-gold/50 focus:outline-none focus:ring-1 focus:ring-mystic-gold/30 transition-all resize-none" placeholder="Conte-me sobre sua situa&#231;&#227;o..."></textarea>
+          </div>
+          <button type="submit" class="btn-gold w-full py-4 rounded-lg text-sm tracking-wider cursor-pointer">Enviar Pedido aos Arcanos</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="relative border-t border-mystic-gold/10 py-12">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="grid md:grid-cols-4 gap-8 mb-10">
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3 mb-4">
+            <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
+              <circle cx="50" cy="50" r="45" stroke="#D4A843" stroke-width="2" fill="none"/>
+              <path d="M50 10 A35 35 0 0 0 50 80 A25 25 0 0 1 50 10Z" fill="#D4A843"/>
+            </svg>
+            <span class="font-decorative text-lg text-gold-gradient">Odoya Rose</span>
+          </div>
+          <p class="font-serif text-mystic-silver/60 max-w-sm leading-relaxed">
+            Servi&#231;os esot&#233;ricos e oracle com tradi&#231;&#227;o cigana. Guiando almas desde 2009.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-decorative text-mystic-gold mb-4">Navega&#231;&#227;o</h4>
+          <ul class="space-y-2">
+            <li><a href="#servicos" class="font-sans text-sm text-mystic-silver/50 hover:text-mystic-gold transition-colors cursor-pointer">Serviços</a></li>
+            <li><a href="#loja" class="font-sans text-sm text-mystic-silver/50 hover:text-mystic-gold transition-colors cursor-pointer">Loja Mágica</a></li>
+            <li><a href="#depoimentos" class="font-sans text-sm text-mystic-silver/50 hover:text-mystic-gold transition-colors cursor-pointer">Depoimentos</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-decorative text-mystic-gold mb-4">Contato</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="font-sans text-sm text-mystic-silver/50 hover:text-mystic-gold transition-colors cursor-pointer flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              WhatsApp
+            </a></li>
+            <li><a href="#" class="font-sans text-sm text-mystic-silver/50 hover:text-mystic-gold transition-colors cursor-pointer flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+              E-mail
+            </a></li>
+            <li><a href="#" class="font-sans text-sm text-mystic-silver/50 hover:text-mystic-gold transition-colors cursor-pointer flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+              Instagram
+            </a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-mystic-gold/10 pt-6 mb-6">
+        <p class="font-sans text-xs text-mystic-silver/40 text-center mb-3">Formas de pagamento aceitas</p>
+        <div class="flex items-center justify-center gap-6 opacity-40">
+          <span class="font-sans text-xs">AbacatePay</span>
+          <span class="font-sans text-xs">Mercado Pago</span>
+          <span class="font-sans text-xs">PIX</span>
+          <span class="font-sans text-xs">Cartão de Crédito</span>
+          <span class="font-sans text-xs">Boleto</span>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <p class="font-sans text-xs text-mystic-silver/30">
+          &copy; 2025 Odoya Rose. Todos os direitos reservados. Os arcanos escolhem seu caminho.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== CHECKOUT MODAL ==================== -->
+  <div id="checkoutModal" class="modal-overlay">
+    <div class="bg-mystic-purple/95 backdrop-blur-xl border border-mystic-gold/30 rounded-2xl p-6 md:p-8 max-w-lg mx-4 max-h-[90vh] overflow-y-auto">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="font-decorative text-xl text-mystic-gold">Finalizar Compra</h3>
+        <button onclick="closeCheckout()" class="cursor-pointer hover:text-mystic-gold transition-colors" aria-label="Fechar">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Order Summary -->
+      <div id="checkoutItems" class="mb-6 space-y-2"></div>
+      <div class="border-t border-mystic-gold/20 pt-4 mb-6">
+        <div class="flex justify-between items-center">
+          <span class="font-sans text-mystic-gold font-bold">Total:</span>
+          <span class="font-decorative text-2xl text-mystic-brightGold" id="checkoutTotal">R$ 0,00</span>
+        </div>
+      </div>
+
+      <!-- Customer Info -->
+      <div class="space-y-4 mb-6">
+        <div>
+          <label class="block font-sans text-sm text-mystic-gold mb-1">Nome Completo</label>
+          <input type="text" id="custName" class="w-full bg-mystic-deep/50 border border-mystic-gold/20 rounded-lg px-4 py-2 text-mystic-moonlight font-serif focus:border-mystic-gold/50 focus:outline-none focus:ring-1 focus:ring-mystic-gold/30 transition-all" placeholder="Seu nome completo">
+        </div>
+        <div>
+          <label class="block font-sans text-sm text-mystic-gold mb-1">E-mail</label>
+          <input type="email" id="custEmail" class="w-full bg-mystic-deep/50 border border-mystic-gold/20 rounded-lg px-4 py-2 text-mystic-moonlight font-serif focus:border-mystic-gold/50 focus:outline-none focus:ring-1 focus:ring-mystic-gold/30 transition-all" placeholder="seu@email.com">
+        </div>
+        <div>
+          <label class="block font-sans text-sm text-mystic-gold mb-1">CPF</label>
+          <input type="text" id="custCpf" class="w-full bg-mystic-deep/50 border border-mystic-gold/20 rounded-lg px-4 py-2 text-mystic-moonlight font-serif focus:border-mystic-gold/50 focus:outline-none focus:ring-1 focus:ring-mystic-gold/30 transition-all" placeholder="000.000.000-00">
+        </div>
+      </div>
+
+      <!-- Payment Method Selection -->
+      <h4 class="font-decorative text-lg text-mystic-gold mb-4">Escolha a Forma de Pagamento</h4>
+      <div class="space-y-3 mb-6">
+
+        <!-- Mercado Pago -->
+        <button onclick="payWithMercadoPago()" class="w-full flex items-center gap-4 p-4 rounded-xl border border-blue-500/30 hover:bg-blue-500/10 transition-all cursor-pointer text-left">
+          <svg width="40" height="40" viewBox="0 0 80 80" fill="none">
+            <rect x="5" y="5" width="70" height="70" rx="15" fill="url(#mpGrad)" stroke="#1E97E5" stroke-width="1"/>
+            <text x="40" y="36" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="sans-serif">Mercado</text>
+            <text x="40" y="52" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="sans-serif">Pago</text>
+            <defs><linearGradient id="mpGrad" x1="5" y1="5" x2="75" y2="75"><stop offset="0%" style="stop-color:#1E97E5"/><stop offset="100%" style="stop-color:#0D7EC8"/></linearGradient></defs>
+          </svg>
+          <div>
+            <p class="font-sans text-sm text-white font-bold">Mercado Pago</p>
+            <p class="font-sans text-xs text-mystic-silver/50">Cartão de crédito, boleto e mais</p>
+          </div>
+        </button>
+
+        <!-- AbacatePay -->
+        <button onclick="payWithAbacate()" class="w-full flex items-center gap-4 p-4 rounded-xl border border-green-500/30 hover:bg-green-500/10 transition-all cursor-pointer text-left">
+          <svg width="40" height="40" viewBox="0 0 80 80" fill="none">
+            <rect x="5" y="5" width="70" height="70" rx="15" fill="url(#abGrad)" stroke="#A7C9A0" stroke-width="1"/>
+            <text x="40" y="46" text-anchor="middle" fill="white" font-size="10" font-weight="bold" font-family="sans-serif">ABACATE</text>
+            <defs><linearGradient id="abGrad" x1="5" y1="5" x2="75" y2="75"><stop offset="0%" style="stop-color:#1B4332"/><stop offset="100%" style="stop-color:#2D6A4F"/></linearGradient></defs>
+          </svg>
+          <div>
+            <p class="font-sans text-sm text-white font-bold">AbacatePay</p>
+            <p class="font-sans text-xs text-mystic-silver/50">Checkout seguro e rápido</p>
+          </div>
+        </button>
+
+        <!-- PIX -->
+        <button onclick="payWithPix()" class="w-full flex items-center gap-4 p-4 rounded-xl border border-cyan-500/30 hover:bg-cyan-500/10 transition-all cursor-pointer text-left">
+          <svg width="40" height="40" viewBox="0 0 80 80" fill="none">
+            <rect x="5" y="5" width="70" height="70" rx="15" fill="url(#pixGrad)" stroke="#32BCAD" stroke-width="1"/>
+            <rect x="15" y="15" width="15" height="15" fill="white" opacity="0.9"/>
+            <rect x="18" y="18" width="9" height="9" fill="#32BCAD"/>
+            <rect x="50" y="15" width="15" height="15" fill="white" opacity="0.9"/>
+            <rect x="53" y="18" width="9" height="9" fill="#32BCAD"/>
+            <rect x="15" y="50" width="15" height="15" fill="white" opacity="0.9"/>
+            <rect x="18" y="53" width="9" height="9" fill="#32BCAD"/>
+            <text x="40" y="72" text-anchor="middle" fill="white" font-size="8" font-weight="bold" font-family="sans-serif">PIX</text>
+            <defs><linearGradient id="pixGrad" x1="5" y1="5" x2="75" y2="75"><stop offset="0%" style="stop-color:#00B0CA"/><stop offset="100%" style="stop-color:#32BCAD"/></linearGradient></defs>
+          </svg>
+          <div>
+            <p class="font-sans text-sm text-white font-bold">PIX - QR Code</p>
+            <p class="font-sans text-xs text-mystic-silver/50">Pagamento instantâneo</p>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    // Stars background
+    (function createStars() {
+      const container = document.getElementById('stars');
+      const count = 150;
+      for (let i = 0; i < count; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDelay = Math.random() * 5 + 's';
+        star.style.animationDuration = (2 + Math.random() * 4) + 's';
+        star.style.width = star.style.height = (1 + Math.random() * 2) + 'px';
+        container.appendChild(star);
+      }
+    })();
+
+    // Cart
+    let cart = [];
+    function addToCart(name, price, id) {
+      const existing = cart.find(item => item.id === id);
+      if (existing) { existing.qty++; }
+      else { cart.push({ name, price, id, qty: 1 }); }
+      updateCartUI();
+      const badge = document.getElementById('cartCount');
+      badge.style.transform = 'scale(1.5)';
+      setTimeout(() => badge.style.transform = 'scale(1)', 300);
+    }
+
+    function removeFromCart(id) {
+      cart = cart.filter(item => item.id !== id);
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      document.getElementById('cartCount').textContent = totalItems;
+
+      const cartItemsEl = document.getElementById('cartItems');
+      const cartTotalEl = document.getElementById('cartTotal');
+
+      if (cart.length === 0) {
+        cartItemsEl.innerHTML = '<p class="text-mystic-silver/60 text-center font-serif italic mt-12">O mist&#234;rio ainda n&#227;o revelou seus itens...</p>';
+        cartTotalEl.textContent = 'R$ 0,00';
+        return;
+      }
+
+      let html = '';
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price * item.qty;
+        html += '<div class="flex items-center justify-between bg-mystic-deep/30 rounded-lg p-3 border border-mystic-gold/10">' +
+          '<div class="flex-1"><p class="font-sans text-sm text-mystic-gold">' + item.name + '</p>' +
+          '<p class="font-sans text-xs text-mystic-silver/50">Qtd: ' + item.qty + ' x R$ ' + item.price.toFixed(2).replace('.', ',') + '</p></div>' +
+          '<div class="flex items-center gap-3"><span class="font-decorative text-mystic-brightGold text-sm">R$ ' + (item.price * item.qty).toFixed(2).replace('.', ',') + '</span>' +
+          '<button onclick="removeFromCart(\'' + item.id + '\')" class="cursor-pointer text-mystic-silver/40 hover:text-red-400 transition-colors" aria-label="Remover ' + item.name + '">' +
+          '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div></div>';
+      });
+      cartItemsEl.innerHTML = html;
+      cartTotalEl.textContent = 'R$ ' + total.toFixed(2).replace('.', ',');
+    }
+
+    function toggleCart() {
+      const sidebar = document.getElementById('cartSidebar');
+      sidebar.classList.toggle('translate-x-full');
+      sidebar.classList.toggle('translate-x-0');
+    }
+
+    // Checkout Modal
+    function openCheckout() {
+      if (cart.length === 0) {
+        alert('Seu carrinho est&#225; vazio. Adicione itens antes de finalizar.');
+        return;
+      }
+      toggleCart();
+      const modal = document.getElementById('checkoutModal');
+      const itemsEl = document.getElementById('checkoutItems');
+      const totalEl = document.getElementById('checkoutTotal');
+      let html = '';
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price * item.qty;
+        html += '<div class="flex justify-between text-sm"><span class="font-sans text-mystic-silver">' + item.qty + 'x ' + item.name + '</span><span class="font-sans text-mystic-gold">R$ ' + (item.price * item.qty).toFixed(2).replace('.', ',') + '</span></div>';
+      });
+      itemsEl.innerHTML = html;
+      totalEl.textContent = 'R$ ' + total.toFixed(2).replace('.', ',');
+      modal.classList.add('active');
+    }
+
+    function closeCheckout() {
+      document.getElementById('checkoutModal').classList.remove('active');
+    }
+
+    // =====================================================
+    // CONFIGURAÇÃO DA API BACKEND
+    // Altere para o domínio do seu backend em produção
+    // =====================================================
+    const API_BASE = window.location.hostname === 'localhost' 
+      ? 'http://localhost:3456' 
+      : '';
+
+    // =====================================================
+    // MERCADO PAGO - Integração via Backend
+    // =====================================================
+    async function payWithMercadoPago() {
+      const name = document.getElementById('custName').value.trim();
+      const email = document.getElementById('custEmail').value.trim();
+      const cpf = document.getElementById('custCpf').value.trim();
+
+      if (!name || !email) {
+        showCheckoutError('Por favor, preencha nome e e-mail.');
+        return;
+      }
+
+      setLoading(true);
+
+      try {
+        const payload = {
+          items: cart.map(item => ({ name: item.name, price: item.price, qty: item.qty })),
+          buyer: {
+            firstName: name.split(' ')[0] || name,
+            lastName: name.split(' ').slice(1).join(' ') || '',
+            email: email,
+            cpf: cpf
+          }
+        };
+
+        const resp = await fetch(`${API_BASE}/api/mp/create-preference`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await resp.json();
+
+        if (!resp.ok || data.error) {
+          throw new Error(data.error || 'Erro ao criar pagamento');
+        }
+
+        // Redireciona para o checkout do Mercado Pago
+        const checkoutUrl = data.sandbox_init_point || data.init_point;
+        if (checkoutUrl) {
+          window.location.href = checkoutUrl;
+        } else {
+          throw new Error('URL de checkout não retornada');
+        }
+
+      } catch (err) {
+        console.error('Mercado Pago Error:', err);
+        showCheckoutError('Erro ao conectar com Mercado Pago. Verifique se o backend está rodando.');
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    // =====================================================
+    // ABACATEPAY - Integração via Backend
+    // =====================================================
+    async function payWithAbacate() {
+      const name = document.getElementById('custName').value.trim();
+      const email = document.getElementById('custEmail').value.trim();
+
+      if (!name || !email) {
+        showCheckoutError('Por favor, preencha nome e e-mail.');
+        return;
+      }
+
+      setLoading(true);
+
+      try {
+        const payload = {
+          items: cart.map(item => ({ name: item.name, price: item.price, qty: item.qty })),
+          customer: {
+            firstName: name.split(' ')[0] || name,
+            lastName: name.split(' ').slice(1).join(' ') || '',
+            email: email,
+            cpf: document.getElementById('custCpf').value.trim()
+          }
+        };
+
+        const resp = await fetch(`${API_BASE}/api/abacate/create-charge`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await resp.json();
+
+        if (!resp.ok || data.error) {
+          throw new Error(data.error || 'Erro ao criar cobrança');
+        }
+
+        // Redireciona para o checkout do AbacatePay
+        const checkoutUrl = data.checkout_url || data.url;
+        if (checkoutUrl) {
+          window.location.href = checkoutUrl;
+        } else {
+          throw new Error('URL de checkout não retornada');
+        }
+
+      } catch (err) {
+        console.error('AbacatePay Error:', err);
+        showCheckoutError('Erro ao conectar com AbacatePay. Verifique se o backend está rodando.');
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    // =====================================================
+    // PIX - Integração via Backend (Mercado Pago PIX dinâmico)
+    // =====================================================
+    async function payWithPix() {
+      const name = document.getElementById('custName').value.trim();
+      const email = document.getElementById('custEmail').value.trim();
+      const cpf = document.getElementById('custCpf').value.trim();
+
+      if (!name || !email) {
+        showCheckoutError('Por favor, preencha nome e e-mail.');
+        return;
+      }
+
+      setLoading(true);
+
+      try {
+        const payload = {
+          items: cart.map(item => ({ name: item.name, price: item.price, qty: item.qty })),
+          buyer: {
+            firstName: name.split(' ')[0] || name,
+            lastName: name.split(' ').slice(1).join(' ') || '',
+            email: email,
+            cpf: cpf
+          }
+        };
+
+        const resp = await fetch(`${API_BASE}/api/mp/create-pix`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await resp.json();
+
+        if (!resp.ok || data.error) {
+          throw new Error(data.error || 'Erro ao criar PIX');
+        }
+
+        // Mostra o QR Code do PIX
+        showPixResult(data);
+
+      } catch (err) {
+        console.error('PIX Error:', err);
+        // Fallback: mostra PIX estático
+        showStaticPix();
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    // =====================================================
+    // FUNÇÕES AUXILIARES DO CHECKOUT
+    // =====================================================
+
+    function showCheckoutError(msg) {
+      const container = document.querySelector('#checkoutModal > div');
+      if (container) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'bg-red-500/20 border border-red-500/40 rounded-xl p-4 mb-4';
+        errorDiv.innerHTML = `<p class="font-sans text-sm text-red-300">${msg}</p>`;
+        container.insertBefore(errorDiv, container.querySelector('.space-y-3'));
+        setTimeout(() => errorDiv.remove(), 5000);
+      }
+    }
+
+    function setLoading(isLoading) {
+      const btns = document.querySelectorAll('#checkoutModal button[onclick^="payWith"]');
+      btns.forEach(btn => {
+        btn.disabled = isLoading;
+        btn.style.opacity = isLoading ? '0.5' : '1';
+        btn.style.cursor = isLoading ? 'not-allowed' : 'pointer';
+      });
+    }
+
+    function showPixResult(data) {
+      const modal = document.getElementById('checkoutModal');
+      const total = document.getElementById('checkoutTotal').textContent;
+      const qrCodeBase64 = data.qr_code_base64;
+      const ticketUrl = data.ticket_url;
+
+      let qrContent = '';
+      if (qrCodeBase64) {
+        qrContent = `<img src="data:image/png;base64,${qrCodeBase64}" width="200" height="200" alt="QR Code PIX" class="rounded-xl"/>`;
+      } else if (ticketUrl) {
+        qrContent = `<img src="${ticketUrl}" width="200" height="200" alt="QR Code PIX" class="rounded-xl"/>`;
+      } else {
+        qrContent = `<div class="bg-white rounded-xl p-4 inline-block"><p class="font-sans text-xs text-gray-600 text-center">QR Code gerado com sucesso</p></div>`;
+      }
+
+      modal.innerHTML = `
+        <div class="bg-mystic-purple/95 backdrop-blur-xl border border-mystic-gold/30 rounded-2xl p-6 md:p-8 max-w-md mx-4 text-center">
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="font-decorative text-xl text-mystic-gold">Pagamento via PIX</h3>
+            <button onclick="closeCheckout(); location.reload();" class="cursor-pointer hover:text-mystic-gold transition-colors" aria-label="Fechar">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+          </div>
+          <div class="mb-4">${qrContent}</div>
+          <p class="font-serif text-mystic-silver/70 text-sm mb-2">Escaneie o QR Code ou copie o código:</p>
+          <div class="bg-mystic-deep/50 rounded-lg p-3 mb-3">
+            <code class="font-sans text-xs text-mystic-gold break-all">${data.qr_code || data.code || 'PIX gerado com sucesso'}</code>
+          </div>
+          <button onclick="copyPixCode()" class="btn-gold px-6 py-2 rounded-lg text-xs cursor-pointer mb-2">Copiar Código PIX</button>
+          ${ticketUrl ? `<p class="font-sans text-xs text-mystic-silver/40 mb-2">Ou escaneie com o app do seu banco</p>` : ''}
+          <p class="font-sans text-xs text-mystic-silver/40">Valor: <span class="text-mystic-gold font-bold">${total}</span></p>
+          <p class="font-sans text-xs text-mystic-silver/40 mt-2">Expira em: ${data.expires_at ? new Date(data.expires_at).toLocaleString('pt-BR') : '30 minutos'}</p>
+        </div>
+      `;
+    }
+
+    function showStaticPix() {
+      const modal = document.getElementById('checkoutModal');
+      const total = document.getElementById('checkoutTotal').textContent;
+      modal.innerHTML = `
+        <div class="bg-mystic-purple/95 backdrop-blur-xl border border-mystic-gold/30 rounded-2xl p-6 md:p-8 max-w-md mx-4 text-center">
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="font-decorative text-xl text-mystic-gold">Pagamento via PIX</h3>
+            <button onclick="closeCheckout(); location.reload();" class="cursor-pointer hover:text-mystic-gold transition-colors" aria-label="Fechar">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+          </div>
+          <div class="bg-white rounded-xl p-4 mb-4 inline-block">
+            <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <rect width="200" height="200" fill="white"/>
+              <rect x="10" y="10" width="50" height="50" fill="black"/>
+              <rect x="15" y="15" width="40" height="40" fill="white"/>
+              <rect x="22" y="22" width="26" height="26" fill="black"/>
+              <rect x="140" y="10" width="50" height="50" fill="black"/>
+              <rect x="145" y="15" width="40" height="40" fill="white"/>
+              <rect x="152" y="22" width="26" height="26" fill="black"/>
+              <rect x="10" y="140" width="50" height="50" fill="black"/>
+              <rect x="15" y="145" width="40" height="40" fill="white"/>
+              <rect x="22" y="152" width="26" height="26" fill="black"/>
+              <rect x="70" y="10" width="10" height="10" fill="black"/><rect x="90" y="10" width="10" height="10" fill="black"/><rect x="110" y="10" width="10" height="10" fill="black"/>
+              <rect x="70" y="30" width="10" height="10" fill="black"/><rect x="100" y="30" width="10" height="10" fill="black"/><rect x="120" y="30" width="10" height="10" fill="black"/>
+              <rect x="10" y="70" width="10" height="10" fill="black"/><rect x="30" y="70" width="10" height="10" fill="black"/><rect x="50" y="70" width="10" height="10" fill="black"/>
+              <rect x="70" y="70" width="10" height="10" fill="black"/><rect x="90" y="70" width="10" height="10" fill="black"/><rect x="110" y="70" width="10" height="10" fill="black"/>
+              <rect x="130" y="70" width="10" height="10" fill="black"/><rect x="150" y="70" width="10" height="10" fill="black"/><rect x="170" y="70" width="10" height="10" fill="black"/><rect x="190" y="70" width="10" height="10" fill="black"/>
+              <rect x="20" y="90" width="10" height="10" fill="black"/><rect x="40" y="90" width="10" height="10" fill="black"/><rect x="80" y="90" width="10" height="10" fill="black"/>
+              <rect x="100" y="90" width="10" height="10" fill="black"/><rect x="140" y="90" width="10" height="10" fill="black"/><rect x="160" y="90" width="10" height="10" fill="black"/><rect x="180" y="90" width="10" height="10" fill="black"/>
+              <rect x="70" y="130" width="10" height="10" fill="black"/><rect x="90" y="130" width="10" height="10" fill="black"/><rect x="110" y="130" width="10" height="10" fill="black"/>
+              <rect x="130" y="130" width="10" height="10" fill="black"/><rect x="160" y="130" width="10" height="10" fill="black"/><rect x="180" y="130" width="10" height="10" fill="black"/>
+              <rect x="70" y="150" width="10" height="10" fill="black"/><rect x="100" y="150" width="10" height="10" fill="black"/><rect x="140" y="150" width="10" height="10" fill="black"/><rect x="170" y="150" width="10" height="10" fill="black"/>
+              <rect x="70" y="170" width="10" height="10" fill="black"/><rect x="90" y="170" width="10" height="10" fill="black"/><rect x="110" y="170" width="10" height="10" fill="black"/>
+              <rect x="130" y="170" width="10" height="10" fill="black"/><rect x="150" y="170" width="10" height="10" fill="black"/><rect x="170" y="170" width="10" height="10" fill="black"/><rect x="190" y="170" width="10" height="10" fill="black"/>
+              <rect x="70" y="190" width="10" height="10" fill="black"/><rect x="100" y="190" width="10" height="10" fill="black"/><rect x="140" y="190" width="10" height="10" fill="black"/><rect x="180" y="190" width="10" height="10" fill="black"/>
+            </svg>
+          </div>
+          <p class="font-serif text-mystic-silver/70 text-sm mb-2">Chave PIX (Copia e Cola):</p>
+          <div class="bg-mystic-deep/50 rounded-lg p-3 mb-4">
+            <code class="font-sans text-xs text-mystic-gold break-all">0d4f2a8b-3c7e-4f1a-9b5d-8e2c6a0f4d3b</code>
+          </div>
+          <button onclick="copyStaticPixKey()" class="btn-gold px-6 py-2 rounded-lg text-xs cursor-pointer">Copiar Chave PIX</button>
+          <p class="font-sans text-xs text-mystic-silver/40 mt-4">Valor: <span class="text-mystic-gold font-bold">${total}</span></p>
+        </div>
+      `;
+    }
+
+    function copyPixCode() {
+      const code = document.querySelector('#checkoutModal code.font-sans.text-xs');
+      if (code) {
+        navigator.clipboard.writeText(code.textContent).then(() => {
+          const btn = document.querySelector('#checkoutModal button.btn-gold');
+          if (btn) { btn.textContent = 'Copiado!'; setTimeout(() => btn.textContent = 'Copiar Código PIX', 2000); }
+        });
+      }
+    }
+
+    function copyStaticPixKey() {
+      navigator.clipboard.writeText('0d4f2a8b-3c7e-4f1a-9b5d-8e2c6a0f4d3b').then(() => {
+        const btn = document.querySelector('#checkoutModal button.btn-gold');
+        if (btn) { btn.textContent = 'Copiado!'; setTimeout(() => btn.textContent = 'Copiar Chave PIX', 2000); }
+      });
+    }
+
+    // Mobile menu
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    }
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.add('hidden');
+    }
+
+    // Form submit
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      const orig = btn.textContent;
+      btn.textContent = '&#9786; Mensagem Enviada aos Arcanos!';
+      btn.style.background = 'linear-gradient(135deg, #1B4332, #2D6A4F)';
+      btn.style.color = '#A7C9A0';
+      setTimeout(() => {
+        btn.textContent = orig;
+        btn.style.background = '';
+        btn.style.color = '';
+        e.target.reset();
+      }, 3000);
+    }
+
+    // Close modals on overlay click
+    document.getElementById('checkoutModal').addEventListener('click', function(e) {
+      if (e.target === this) closeCheckout();
+    });
+
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.card-mystic').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
+
